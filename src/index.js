@@ -4,8 +4,12 @@ import App from './components/App';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import todoApp from './reducers'
+import { loadState, saveState } from './localStorage'
 
-const store = createStore(todoApp)
+const persistedState = loadState();
+const store = createStore(todoApp, persistedState)
+
+store.subscribe( () => { saveState(store.getState()); } );
 
 ReactDOM.render(
     <Provider store={ store }>
