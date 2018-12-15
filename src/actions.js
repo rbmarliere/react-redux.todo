@@ -1,3 +1,5 @@
+import { v4 } from 'node-uuid';
+
 /*
  * action types
  */
@@ -20,9 +22,7 @@ export const VisibilityFilters = {
  * action creators
  */
 
-export function addTodo(text) {
-  return { type: ADD_TODO, text }
-}
+export const addTodo = (text) => ({ type: ADD_TODO, id: v4(), text });
 
 export function toggleTodo(index) {
   return { type: TOGGLE_TODO, index }
