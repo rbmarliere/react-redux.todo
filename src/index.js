@@ -9,7 +9,7 @@ import { loadState, saveState } from './localStorage'
 const persistedState = loadState();
 const store = createStore(todoApp, persistedState)
 
-store.subscribe( () => { saveState(store.getState()); } );
+store.subscribe( () => { saveState({ todos: store.getState().todos }); } );
 
 ReactDOM.render(
     <Provider store={ store }>
